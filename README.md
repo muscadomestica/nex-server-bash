@@ -14,13 +14,7 @@ Press ctrl + z then type bg
 This server is written in bash! Bash, as I understand it, is relatively insecure in this context, as there is a risk of [command injection](https://en.wikipedia.org/wiki/Code_injection).
 I honestly just never wrote a server and it seemed fun! It was :^) I don't know how secure it is, if you don't either then I don't recommend exposing it to the public
 ### i left this running and disconnected from the server and can't find the active job anymore 
-#### option one
 ```
 pkill tcpserver
 ```
 This might be uncool if you have another tcpserver process running as that user
-#### option two
-```
-kill $(ps -u youruser | grep tcpserver | awk '{print $1}' | tail -n1)
-```
-This gets the pid of the latest running tcpserver process and kills it

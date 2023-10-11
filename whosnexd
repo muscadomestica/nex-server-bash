@@ -9,7 +9,7 @@ filesdir="/var/nex"
 ### then printing only the column with the IP addresses
 ### getting rid of the port used by the client
 ### displaying every ip but once
-### removing spaces and numbering from "sort" output
+### removing spaces and numbering from "uniq -c" output
 printf "$(netstat -tn 2>/dev/null | grep :1900 | awk '{print $5}' | cut -d: -f1 | sort | uniq -c | sort -nr | sed -e 's/ //g' >
 
 # remove \r from request (this happens when one connects via telnet)

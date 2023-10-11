@@ -10,7 +10,11 @@ filesdir="/var/nex"
 ### getting rid of the port used by the client
 ### displaying every ip but once
 ### removing spaces and numbering from "uniq -c" output
-printf "$(netstat -tn 2>/dev/null | grep :1900 | awk '{print $5}' | cut -d: -f1 | sort | uniq -c | sort -nr | sed -e 's/ //g' >
+## next part prints the date like [2023-12-31 01:02:03]
+## finally it prints the request in green
+printf "$(netstat -tn 2>/dev/null | grep :1900 | awk '{print $5}' | cut -d: -f1 | sort | uniq -c | sort -nr | sed -e 's/ //g' -e '1s/^.//')  [$(date +'%Y-%m-%d %T')]\
+nREQUEST: \033[32m$request\x1b[0m\n" >> $nlog
+
 
 # remove \r from request (this happens when one connects via telnet)
 response="$(echo $request | sed -e "s/\\r//")"

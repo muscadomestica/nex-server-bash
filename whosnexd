@@ -1,0 +1,37 @@
+#!/usr/bin/bash
+read -r "request"
+nlog="/var/log/nex"
+filesdir="/var/nex"
+
+# log all Requests to /var/log/nex (adjust as you like it)
+## the first part displays the IP address by 
+### grepping port 1900 in the netstat table
+### then printing only the column with the IP addresses
+### getting rid of the port used by the client
+### displaying every ip but once
+### removing spaces and numbering from "sort" output
+printf "$(netstat -tn 2>/dev/null | grep :1900 | awk '{print $5}' | cut -d: -f1 | sort | uniq -c | sort -nr | sed -e 's/ //g' >
+
+# remove \r from request (this happens when one connects via telnet)
+response="$(echo $request | sed -e "s/\\r//")"
+
+# no request? redirect to /
+if [[ "$response" = ""  ]]; then
+response="/"
+fi
+
+# if request ends on "/" redirect to /index
+if [[ $hinaus  =~ /$ ]]; then
+response="$response/index"
+cat "$filesdir/$response"
+
+else
+# be normal. request = response
+cat "$filesdir/$response"
+fi
+
+# if file doesnt exist return error
+if [ ! -r "/var/nex/$response" ]; then
+echo "oopsie whoopsie no file or also maybe bad setup sad smiley face"
+fi
+

@@ -12,7 +12,7 @@ Press ctrl + z then type bg
 ## possible questions
 ### is it secure?
 This server is written in bash! Bash, as I understand it, is relatively insecure in this context, as there is a risk of [command injection](https://en.wikipedia.org/wiki/Code_injection).
-I honestly just never wrote a server and it seemed fun! It was :^) I don't know how secure it is, if don't either then I don't recommend exposing it to the public
+I honestly just never wrote a server and it seemed fun! It was :^) I don't know how secure it is, if you don't either then I don't recommend exposing it to the public
 ### i left this running and disconnected from the server and can't find the active job anymore 
 #### option one
 ```

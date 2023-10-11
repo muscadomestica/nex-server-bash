@@ -1,5 +1,6 @@
 # nex-server-bash
 Nightfall City's Express Transportation System -- nex:// is a new protocol which serves plain text over port 1900. Here is a server for it
+Specifications for this protocol (that I didn't make) can be found [here](https://nightfall.city/nex/info/specification.txt)
 
 ## how does it work?
 Replace /var/nex with your directory of choice and /var/log/nex with your logfile of choice. run the server like this:
